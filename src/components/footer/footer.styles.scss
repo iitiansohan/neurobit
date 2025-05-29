@@ -1,0 +1,34 @@
+.footer {
+    padding: 5px;
+
+    .footernote {
+        font-size: x-small;
+    }
+
+    .pr-lg {
+        font-size: smaller;
+    }
+
+    .txtimg {
+        mix-blend-mode: multiply;
+    }
+
+    .made-with-love {
+        font-size: 0.8rem;
+        color: #6c757d; // subtle gray
+        margin-top: 8px;
+    }
+
+    .footer-row {
+        padding-top: 0;
+    }
+
+    // responsive spacing for buttons
+    a > button {
+        margin-left: 10px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}

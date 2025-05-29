@@ -1,0 +1,6 @@
+#root{
+    background: linear-gradient(to top, #f1e7ff 0%, #f6f9ff 100%);
+    max-height: max-content;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* height: 200vh; */
+}

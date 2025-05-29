@@ -1,0 +1,72 @@
+.header {
+  height: 10vh;
+  background: linear-gradient(to left, #0e26ff 0%, #dbdbdb 100%);
+  // linear-gradient(-20deg, #6333aa 0%, #8f8f8f 100%)
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: large;
+
+  .navbar {
+    height: 100%;
+    display: flex;
+    align-items: center;      // Vertically center navbar content
+  }
+
+  .navbar-brand {
+    font-weight: 600;
+    font-size: 2.3rem;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;      // Center logo + text vertically
+    gap: 0.5rem;
+
+    img {
+      mix-blend-mode: multiply;
+      border-radius: 8px;
+    }
+  }
+
+  .nav-link {
+    font-weight: 500;
+    color: rgb(255, 255, 255) !important;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #4a4a4a;
+    }
+  }
+
+  .me-auto {
+    margin-left: auto;
+  }
+
+  .navbar-collapse {
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;       // Vertically center nav links container
+  }
+
+  .navbar-toggler {
+    border: none;
+  }
+
+  .profile-section {
+    display: flex;
+    align-items: center;       // Center profile pic + name vertically
+
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    span {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+}
