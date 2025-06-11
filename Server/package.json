@@ -1,5 +1,5 @@
 {
-  "name": "medicall",
+  "name": "neurobit",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
@@ -9,7 +9,7 @@
     "start-dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "Prakhar Srivastava",
+  "author": "Sohan RC",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
