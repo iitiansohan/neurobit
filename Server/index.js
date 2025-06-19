@@ -11,7 +11,7 @@ import appointmentRoute from './routes/appointment.js';
 dotenv.config()
 
 const app = express()
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 5000
 
 const corsOptions = {
     origin: true
@@ -21,11 +21,11 @@ app.get('/', (req, res) => {
     res.send("WORKING")
 })
 
-main().catch(err => console.log(err));
+main().catch(err => console.log(err));//catch block to resolve the error is connection to the database has failed
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/medicall');
-  console.log("connected to database");
+  await mongoose.connect(process.env.CONNECTION_STRING);
+  console.log("Database Connected");
 
 }
 

@@ -11,6 +11,8 @@ import Button from 'react-bootstrap/Button';
 
 import login from '../../assets/login.jpg'
 import './login.scss'
+import { BASE_URL } from '../../config';
+
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -31,7 +33,7 @@ const Login = () => {
         event.preventDefault();
         setLoading(true)
         try {
-            const res = await fetch('http://localhost:5000/api/auth/login', {
+            const res = await fetch(`${BASE_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -26,7 +26,7 @@ const Footer = () => (
                         />
                         <span className="pr-lg ms-2">© {new Date().getFullYear()} Neurobit, Inc. All rights reserved.</span>
                     </div>
-                    <p className="mt-2 made-with-love">Made with ❤️ by Sohan RC</p>
+                    <p className="mt-2 made-with-love">Made with ❤️ by Team DevFreaks</p>
                 </Col>
 
                 <Col xs={12} md={6} className="d-flex justify-content-md-end justify-content-start align-items-center mt-3 mt-md-0">

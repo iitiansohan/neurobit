@@ -11,7 +11,7 @@ import Button from 'react-bootstrap/Button';
 import signup from '../../assets/signup.gif'
 import './login.scss'
 
-// const BASE_URL = "http://localhost:5000/api";
+import { BASE_URL } from '../../config';
 
 const Signup = () => {
 
@@ -39,7 +39,7 @@ const Signup = () => {
         event.preventDefault();
         setLoading(true)
         try {
-            const res = await fetch('http://localhost:5000/api/auth/signup', {
+            const res = await fetch(`${BASE_URL}/auth/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
