@@ -3,7 +3,7 @@ import Doctor from '../models/DoctorSchema.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-// ✅ JWT token generator
+// JWT token generator
 const generateToken = user => {
   return jwt.sign(
     { id: user._id, role: user.role },
@@ -12,20 +12,20 @@ const generateToken = user => {
   );
 };
 
-// ✅ SIGNUP Controller
+// SIGNUP Controller
 export const signup = async (req, res) => {
   const { email, password, name, role, gender } = req.body;
 
   try {
-    let user = null;
+    let existingUser = null;
 
     if (role === 'patient') {
-      user = await User.findOne({ email });
+      existingUser = await User.findOne({ email });
     } else {
-      user = await Doctor.findOne({ email });
+      existingUser = await Doctor.findOne({ email });
     }
 
-    if (user) {
+    if (existingUser) {
       return res.status(400).json({ message: 'User already exists!' });
     }
 
@@ -33,7 +33,7 @@ export const signup = async (req, res) => {
     const hashPassword = await bcrypt.hash(password, salt);
 
     if (role === 'patient') {
-      user = new User({
+      await User.create({
         name,
         email,
         password: hashPassword,
@@ -41,7 +41,7 @@ export const signup = async (req, res) => {
         role,
       });
     } else if (role === 'doctor') {
-      user = new Doctor({
+      await Doctor.create({
         name,
         email,
         password: hashPassword,
@@ -49,8 +49,6 @@ export const signup = async (req, res) => {
         role,
       });
     }
-
-    await user.save();
 
     res
       .status(200)
@@ -63,7 +61,8 @@ export const signup = async (req, res) => {
   }
 };
 
-// ✅ LOGIN Controller
+
+// LOGIN Controller
 export const login = async (req, res) => {
   const { email, password } = req.body;
 

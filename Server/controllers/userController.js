@@ -1,7 +1,7 @@
 import User from "../models/UserSchema.js";
 import Booking from "../models/BookingSchema.js";
 import Doctor from "../models/DoctorSchema.js";
-import doc from "../../src/assets/doctors.js";
+import doc from "../assets/doctor.js";
 
 export const updateUser = async (req, res) => {
     const id = req.params.id;
@@ -92,17 +92,25 @@ export const getUserProfile = async(req,res)=>{
     }
 }
 
-export const getMyAppointment = async(req,res)=>{
-    try {
-        const bookings = await Booking.find({user: req.userId}) 
+export const getMyAppointment = async (req, res) => {
+  try {
+    // Get all bookings made by the logged-in user
+    const bookings = await Booking.find({ userID: req.userId });
 
-        const doctorIds = bookings.map(el=>el.doctor.id)
+    // Extract doctor IDs from those bookings
+    const doctorIds = bookings.map(el => el.doctorID);
 
-        const doctors = await doc.find({_id:{$in:doctorIds}}).select('-password')
-
-        res.status(200).json({success:true, message:'Getting appointments', data:doctors})
-
-    } catch (error) {
-        
-    }
-}
+    //as of now the doctor list is hardcoded
+    const doctors = doc.filter(d => doctorIds.includes(d._id));
+    //when dynamic doctor list is used
+    //const doctors=await Doctor.find({_id:{$in:doctorIds}}).select('-password');
+    res.status(200).json({
+      success: true,
+      message: 'Getting appointments',
+      data: doctors
+    });
+  } catch (error) {
+    console.error("getMyAppointment error:", error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};

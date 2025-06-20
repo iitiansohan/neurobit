@@ -118,7 +118,7 @@
     }
   ]
 
-module.exports = doc;
+export default doc;
 
 
   
